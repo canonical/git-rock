@@ -1,0 +1,33 @@
+name: git-rock
+base: bare
+build-base: ubuntu@26.04
+version: '2.53'
+summary: A lightweight Git package for version control and CI/CD.
+description: |
+    This project provides a lightweight Git package for version control 
+    and CI/CD. It includes essential Git binaries and HTTP support.
+
+platforms:
+    amd64:
+    arm64:
+    ppc64el:
+    s390x:
+
+parts:
+    git:
+        plugin: nil
+        stage-packages:
+            - base-files_base #gives you fs from ubuntu, eg bins libs usr etc
+            - base-files_chisel #gives you chisel manifest, can use it for chisel manifest, used for others to detect vulenravilities
+            - base-files_release-info #info del OS, no en si porque distroless pero dle sistema en leuq esta basado (26.04)
+            - ca-certificates_data #provides SSL certificates for secure connections
+            - git_bins
+            - git_daemon
+            - git_http-support #include only the most useful ones, if not needed, not include. this avoids regressions  
+
+    deb-security-manifest:
+        plugin: make
+        source: https://github.com/canonical/rocks-security-manifest
+        source-type: git
+        source-branch: main
+        override-prime: gen_manifest
