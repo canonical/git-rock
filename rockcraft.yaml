@@ -21,7 +21,6 @@ parts:
             - base-files_chisel
             - base-files_release-info
             - ca-certificates_data
-            - git_bins
             - git_daemon
             - git_http-support  
 
