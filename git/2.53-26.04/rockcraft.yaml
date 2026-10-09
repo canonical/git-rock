@@ -17,13 +17,13 @@ parts:
     git:
         plugin: nil
         stage-packages:
-            - base-files_base #gives you fs from ubuntu, eg bins libs usr etc
-            - base-files_chisel #gives you chisel manifest, can use it for chisel manifest, used for others to detect vulenravilities
-            - base-files_release-info #info del OS, no en si porque distroless pero dle sistema en leuq esta basado (26.04)
-            - ca-certificates_data #provides SSL certificates for secure connections
+            - base-files_base
+            - base-files_chisel
+            - base-files_release-info
+            - ca-certificates_data
             - git_bins
             - git_daemon
-            - git_http-support #include only the most useful ones, if not needed, not include. this avoids regressions  
+            - git_http-support  
 
     deb-security-manifest:
         plugin: make
