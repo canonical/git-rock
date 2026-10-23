@@ -1,4 +1,4 @@
-name: git-rock
+name: git
 base: bare
 build-base: ubuntu@26.04
 version: '2.53'
