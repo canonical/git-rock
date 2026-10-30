@@ -1,6 +1,6 @@
 name: git
 base: bare
-build-base: ubuntu@26.04
+build-base: devel
 version: '2.53'
 summary: A lightweight Git package for version control and CI/CD.
 description: |
