@@ -1,7 +1,8 @@
 name: git
 base: bare
+# TODO: Update once 26.10 is stabilized
 build-base: devel
-version: '2.53'
+version: '2.55'
 summary: A lightweight Git package for version control and CI/CD.
 description: |
     This project provides a lightweight Git package for version control 
@@ -16,13 +17,26 @@ platforms:
 parts:
     git:
         plugin: nil
-        stage-packages:
-            - base-files_base
-            - base-files_chisel
-            - base-files_release-info
-            - ca-certificates_data
-            - git_daemon
-            - git_http-support  
+
+        # TODO: Uncomment once 26.10 is stabilized
+        # stage-packages:
+        #     - base-files_base
+        #     - base-files_chisel
+        #     - base-files_release-info
+        #     - ca-certificates_data
+        #     - git_daemon
+        #     - git_http-support  
+
+        # TODO: Remove once 26.10 is stabilized
+        override-build: |
+            craftctl default
+            craftctl default
+            chisel cut --release ubuntu-26.10 --root ${CRAFT_PART_INSTALL} \
+              base-files_base \
+              base-files_release-info \
+              ca-certificates_data \
+              git_daemon \
+              git_http-support
 
     deb-security-manifest:
         plugin: make
